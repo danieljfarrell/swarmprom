@@ -7,6 +7,23 @@ Swarmprom is a starter kit for Docker Swarm monitoring with [Prometheus](https:/
 [Alert Manager](https://github.com/prometheus/alertmanager)
 and [Unsee](https://github.com/cloudflare/unsee).
 
+## Dan Notes
+
+Alerts can be dynamically created in Grafana and can be forwared to Alertmanager and distributed as configured. For example, a new alert can be added in the Grafana dashboard, automatically sent to Alertmanager, which then forwards
+the alert to Slack.
+
+First configure Grafana with an alerting notification channel
+
+1. Click the bell icon in the left menu of Grafana
+2. Click notification channel
+3. Click New Channel
+4. Name the new channel "Prometheus Alertmanager"
+5. Select type "Prometheus Alertmanager"
+6. Enter URL `http://alertmanager:9093`
+7. Click Save
+
+This will need to be done after the stack is deployed because this configuration is not included in the .yml
+
 ## Install
 
 Clone this repository and run the monitoring stack:

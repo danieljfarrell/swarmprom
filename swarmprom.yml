@@ -199,7 +199,7 @@ services:
       - net
       - traefik-public
     environment:
-      - JOBS=verne_vmq:8888
+      - JOBS=verne_vmq:8888 traefik_traefik:8080
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
