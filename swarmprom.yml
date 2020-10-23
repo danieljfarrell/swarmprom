@@ -8,9 +8,9 @@ networks:
     external: true
 
 volumes:
-    prometheus: {}
-    grafana: {}
-    alertmanager: {}
+  prometheus: {}
+  grafana: {}
+  alertmanager: {}
 
 configs:
   dockerd_config:
@@ -111,8 +111,8 @@ services:
       - SLACK_CHANNEL=${SLACK_CHANNEL:-general}
       - SLACK_USER=${SLACK_USER:-alertmanager}
     command:
-      - '--config.file=/etc/alertmanager/alertmanager.yml'
-      - '--storage.path=/alertmanager'
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+      - "--storage.path=/alertmanager"
     volumes:
       - alertmanager:/alertmanager
     deploy:
@@ -179,11 +179,11 @@ services:
       - /:/rootfs:ro
       - /etc/hostname:/etc/nodename
     command:
-      - '--path.sysfs=/host/sys'
-      - '--path.procfs=/host/proc'
-      - '--collector.textfile.directory=/etc/node-exporter/'
-      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
-      - '--no-collector.ipvs'
+      - "--path.sysfs=/host/sys"
+      - "--path.procfs=/host/proc"
+      - "--collector.textfile.directory=/etc/node-exporter/"
+      - "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"
+      - "--no-collector.ipvs"
     deploy:
       mode: global
       resources:
@@ -201,9 +201,9 @@ services:
     environment:
       - JOBS=verne_vmq:8888 traefik_traefik:8080
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention=${PROMETHEUS_RETENTION:-24h}'
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention=${PROMETHEUS_RETENTION:-24h}"
     volumes:
       - prometheus:/prometheus
     configs:
